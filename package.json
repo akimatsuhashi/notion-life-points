@@ -1,0 +1,13 @@
+{
+    "name": "notion-life-points",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Notion-embeddable life points gamification widget",
+    "scripts": {
+        "dev": "vercel dev",
+        "build": "echo 'Static site, no build needed'"
+    },
+    "dependencies": {
+        "@notionhq/client": "^2.2.15"
+    }
+}

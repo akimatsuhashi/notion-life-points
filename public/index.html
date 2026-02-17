@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Points</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <div class="widget" id="widget">
+        <!-- Level -->
+        <div class="level-row" id="levelSection">
+            <span class="level-tag" id="levelTag">Lv.1</span>
+            <span class="level-title" id="levelTitle">Seedling</span>
+            <div class="level-bar-wrap">
+                <div class="level-bar" id="levelBar" style="width: 0%"></div>
+            </div>
+            <span class="level-pts" id="levelPts">0/50</span>
+        </div>
+
+        <!-- Tabs -->
+        <nav class="tabs" id="tabs">
+            <button class="tab active" data-period="today">Today</button>
+            <button class="tab" data-period="week">Week</button>
+            <button class="tab" data-period="month">Month</button>
+            <button class="tab" data-period="total">Total</button>
+        </nav>
+
+        <!-- Score panel (today/week/month) -->
+        <div class="panel" id="scorePanel">
+            <div class="score-row">
+                <span class="score-num" id="scoreNum">—</span>
+                <span class="score-label">pts</span>
+                <span class="score-diff" id="scoreDiff"></span>
+            </div>
+            <div class="breakdown" id="breakdown"></div>
+        </div>
+
+        <!-- Chart panel (total) – hidden by default -->
+        <div class="panel hidden" id="chartPanel">
+            <div class="chart-header">
+                <span class="chart-total-num" id="chartTotalNum">—</span>
+                <span class="score-label">pts total</span>
+            </div>
+            <div class="chart-wrap" id="chartWrap">
+                <svg id="chartSvg" preserveAspectRatio="none"></svg>
+                <div class="chart-labels">
+                    <span id="chartLabelStart"></span>
+                    <span id="chartLabelEnd"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+        </div>
+    </div>
+    <script src="/app.js"></script>
+</body>
+
+</html>

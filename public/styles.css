@@ -1,0 +1,318 @@
+/* ═══════════════════════════════════════════════════════════════
+   Life Points — Minimal / Flat / Dark
+   Designed to sit inside a Notion dark-mode dashboard
+   ═══════════════════════════════════════════════════════════════ */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #191919;
+    --surface: #232323;
+    --border: #2e2e2e;
+    --text: #e8e8e8;
+    --text-dim: #777;
+    --accent: #b0a0d8;
+    /* muted lavender — chic, not loud */
+    --positive: #7ec8a4;
+    --negative: #c87e7e;
+    --font: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    --radius: 8px;
+}
+
+body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── Widget ──────────────────────────────────────── */
+.widget {
+    position: relative;
+    max-width: 380px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+/* ── Level row ───────────────────────────────────── */
+.level-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 12px;
+}
+
+.level-tag {
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+}
+
+.level-title {
+    color: var(--text-dim);
+    font-weight: 500;
+}
+
+.level-bar-wrap {
+    flex: 1;
+    height: 3px;
+    background: var(--surface);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.level-bar {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width 0.6s ease;
+}
+
+.level-pts {
+    color: var(--text-dim);
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ── Tabs ────────────────────────────────────────── */
+.tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 14px;
+    gap: 0;
+}
+
+.tab {
+    flex: 1;
+    padding: 8px 0;
+    font-family: var(--font);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.tab:hover {
+    color: var(--text);
+}
+
+.tab.active {
+    color: var(--text);
+    border-bottom-color: var(--accent);
+}
+
+/* ── Panels ──────────────────────────────────────── */
+.panel {
+    animation: fadeIn 0.25s ease;
+}
+
+.panel.hidden {
+    display: none;
+}
+
+/* ── Score ────────────────────────────────────────── */
+.score-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.score-num {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+}
+
+.score-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-dim);
+}
+
+.score-diff {
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: auto;
+}
+
+.score-diff.up {
+    color: var(--positive);
+}
+
+.score-diff.down {
+    color: var(--negative);
+}
+
+.score-diff.flat {
+    color: var(--text-dim);
+}
+
+/* ── Breakdown ───────────────────────────────────── */
+.breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.bd-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+}
+
+.bd-icon {
+    width: 18px;
+    text-align: center;
+    font-size: 12px;
+    flex-shrink: 0;
+}
+
+.bd-name {
+    font-size: 11px;
+    color: var(--text-dim);
+    min-width: 72px;
+    flex-shrink: 0;
+}
+
+.bd-bar-bg {
+    flex: 1;
+    height: 4px;
+    background: var(--surface);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.bd-bar {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.5s ease;
+    min-width: 1px;
+}
+
+.bd-pts {
+    font-size: 12px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    min-width: 28px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+/* bar colours — muted palette */
+.bd-bar.c-tasks {
+    background: #9791c1;
+}
+
+.bd-bar.c-books {
+    background: #7ec8a4;
+}
+
+.bd-bar.c-cinema {
+    background: #c8b87e;
+}
+
+.bd-bar.c-insights {
+    background: #c87eaa;
+}
+
+.bd-bar.c-health_light {
+    background: #7eadc8;
+}
+
+.bd-bar.c-health_steps {
+    background: #c8937e;
+}
+
+/* ── Chart panel ─────────────────────────────────── */
+.chart-header {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.chart-total-num {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+}
+
+.chart-wrap {
+    position: relative;
+}
+
+#chartSvg {
+    width: 100%;
+    height: 100px;
+    display: block;
+}
+
+.chart-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+    font-size: 10px;
+    color: var(--text-dim);
+}
+
+/* ── Loading ─────────────────────────────────────── */
+.loading {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    z-index: 10;
+    transition: opacity 0.3s ease;
+}
+
+.loading.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--surface);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+/* ── Utilities ───────────────────────────────────── */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
