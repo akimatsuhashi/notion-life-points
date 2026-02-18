@@ -13,6 +13,7 @@
         insights: "c-insights",
         health_light: "c-health_light",
         health_steps: "c-health_steps",
+        health_bath: "c-health_bath",
     };
 
     const $ = (s) => document.querySelector(s);

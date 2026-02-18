@@ -87,6 +87,19 @@ const POINT_SOURCES = [
             return Math.floor(steps / 1000);
         },
     },
+    {
+        id: "health_bath",
+        label: "入浴",
+        emoji: "🛁",
+        dbId: "3012f3b8-e9a2-80fc-9ced-f7c3e720fd21",
+        dateProperty: "Date",
+        dateType: "property",
+        filter: {
+            property: "入浴",
+            checkbox: { equals: true },
+        },
+        pointsPerItem: 5,
+    },
 ];
 
 // Level system
